@@ -19,7 +19,7 @@ body {
 img {
   display: block;
   height: 300px;
-  width: max-content;
+  width: auto;
   margin: auto;
   padding: 20px;
 }
