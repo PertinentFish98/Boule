@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>User interface</title>
+    <link rel="stylesheet" type="text/css" href="styledata.css" />
+    <link rel="icon" type="image/png" href="Images/User-interface.png" />
+    <script>
+      const submitBpm = function () {
+        document.querySelector('#bpm').value = null;
+      };
+
+      const submitNotes = function () {
+        let newNotes = [...notes.value.split('-')];
+        for (i in newNotes) {
+          if (newNotes[i] > 12) {
+            alert('Input number doesn´t have a corresponding note. Try again!');
+            break;
+          }
+        }
+
+        document.querySelector('#notes').value = null;
+      };
+    </script>
+  </head>
+  <body>
+    <h1 class="title">Your turn to produce music!</h1>
+    <div class="box">
+      <p class="text">
+        Now, you have the option to choose a bpm, which correponds to the speed
+        used during the execution of the spetacle:
+      </p>
+      <div class="input">
+        <label for="bpm">BPM:</label>
+        <input type="text" id="bpm" name="bpm" />
+        <button id="btnBpm" onclick="submitBpm()">Submit</button>
+      </div>
+      <p class="text">
+        Also, you may create a sequence of musical as you like. Please, consider
+        looking at the table and write all of them at once, separating them by
+        an hifen. After, just wait for the incredible performance of our system.
+      </p>
+      <table id="table">
+        <tr>
+          <th>Number</th>
+          <th>Musical Note</th>
+        </tr>
+        <tr>
+          <th>1</th>
+          <th>A</th>
+        </tr>
+        <tr>
+          <th>2</th>
+          <th>A#</th>
+        </tr>
+        <tr>
+          <th>3</th>
+          <th>B</th>
+        </tr>
+        <tr>
+          <th>4</th>
+          <th>C</th>
+        </tr>
+        <tr>
+          <th>5</th>
+          <th>C#</th>
+        </tr>
+        <tr>
+          <th>6</th>
+          <th>D</th>
+        </tr>
+        <tr>
+          <th>7</th>
+          <th>D#</th>
+        </tr>
+        <tr>
+          <th>8</th>
+          <th>E</th>
+        </tr>
+        <tr>
+          <th>9</th>
+          <th>F</th>
+        </tr>
+        <tr>
+          <th>10</th>
+          <th>F#</th>
+        </tr>
+        <tr>
+          <th>11</th>
+          <th>G</th>
+        </tr>
+        <tr>
+          <th>12</th>
+          <th>G#</th>
+        </tr>
+      </table>
+
+      <div class="input">
+        <label for="notes">Musical notes:</label>
+        <input type="text" id="notes" name="notes" />
+        <button id="btnNotes" onclick="submitNotes()">Submit</button>
+      </div>
+    </div>
+    <script src="script.js" type="module"></script>
+  </body>
+</html>
