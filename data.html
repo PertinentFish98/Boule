@@ -36,6 +36,7 @@
         for (i in newNotes) {
           if (!notes.value.includes('-')) {
             alert('Please write the correct parameter = "-"');
+            break;
           } else if (!possibleChoices.includes(newNotes[i])) {
             alert('Impossible input. Please try again!');
             break;
