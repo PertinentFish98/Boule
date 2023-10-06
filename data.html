@@ -32,12 +32,24 @@
           '10',
           '11',
           '12',
+          'A',
+          'A#',
+          'B',
+          'C',
+          'C#',
+          'D',
+          'D#',
+          'E',
+          'F',
+          'F#',
+          'G',
+          'G#',
         ];
         for (i in newNotes) {
           if (!notes.value.includes('-')) {
             alert('Please write the correct parameter = "-"');
             break;
-          } else if (!possibleChoices.includes(newNotes[i])) {
+          } else if (!possibleChoices.includes(newNotes[i].toUpperCase())) {
             alert('Impossible input. Please try again!');
             break;
           }
@@ -60,9 +72,9 @@
       </div>
       <p class="text">
         Also, you may create a sequence of music notes as you like. Please,
-        consider looking at the table and write all of them at once, separating
-        them by an hifen. After, just wait for the incredible performance of our
-        system.
+        consider looking at the table or put it in the notes directly and write
+        all of them at once, separating them by an hifen. After, just wait for
+        the incredible performance of our system.
       </p>
       <table id="table">
         <tr>
