@@ -19,30 +19,27 @@
 
       const submitNotes = function () {
         let newNotes = [...notes.value.split('-')];
-        if (newNotes.length > 1) {
-          const possibleChoices = [
-            '1',
-            '2',
-            '3',
-            '4',
-            '5',
-            '6',
-            '7',
-            '8',
-            '9',
-            '10',
-            '11',
-            '12',
-          ];
-          for (i in possibleChoices) {
-            if (newNotes[i] !== possibleChoices) {
-              alert('Impossible input. Please try again!');
-              break;
-            }
+        const possibleChoices = [
+          '1',
+          '2',
+          '3',
+          '4',
+          '5',
+          '6',
+          '7',
+          '8',
+          '9',
+          '10',
+          '11',
+          '12',
+        ];
+        for (i in newNotes) {
+          if (!notes.value.includes('-')) {
+            alert('Please write the correct parameter = "-"');
+          } else if (!possibleChoices.includes(newNotes[i])) {
+            alert('Impossible input. Please try again!');
+            break;
           }
-        }
-        if (newNotes.length === 1) {
-          alert('Please write the correct parameter = "-"!');
         }
         document.querySelector('#notes').value = null;
       };
