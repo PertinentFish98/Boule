@@ -9,18 +9,41 @@
     <link rel="icon" type="image/png" href="Images/User-interface.png" />
     <script>
       const submitBpm = function () {
+        const min = 10;
+        const max = 90;
+        if (bpm.value <= min || bpm.value >= max) {
+          alert('Impossible input. Please try again!');
+        }
         document.querySelector('#bpm').value = null;
       };
 
       const submitNotes = function () {
         let newNotes = [...notes.value.split('-')];
-        for (i in newNotes) {
-          if (newNotes[i] > 12) {
-            alert('Input number doesn´t have a corresponding note. Try again!');
-            break;
+        if (newNotes.length > 1) {
+          const possibleChoices = [
+            '1',
+            '2',
+            '3',
+            '4',
+            '5',
+            '6',
+            '7',
+            '8',
+            '9',
+            '10',
+            '11',
+            '12',
+          ];
+          for (i in possibleChoices) {
+            if (newNotes[i] !== possibleChoices) {
+              alert('Impossible input. Please try again!');
+              break;
+            }
           }
         }
-
+        if (newNotes.length === 1) {
+          alert('Please write the correct parameter = "-"!');
+        }
         document.querySelector('#notes').value = null;
       };
     </script>
@@ -33,14 +56,15 @@
         used during the execution of the spetacle:
       </p>
       <div class="input">
-        <label for="bpm">BPM:</label>
-        <input type="text" id="bpm" name="bpm" />
+        <label for="bpm">BPM(10 to 90):</label>
+        <input type="number" id="bpm" name="bpm" />
         <button id="btnBpm" onclick="submitBpm()">Submit</button>
       </div>
       <p class="text">
-        Also, you may create a sequence of musical as you like. Please, consider
-        looking at the table and write all of them at once, separating them by
-        an hifen. After, just wait for the incredible performance of our system.
+        Also, you may create a sequence of music notes as you like. Please,
+        consider looking at the table and write all of them at once, separating
+        them by an hifen. After, just wait for the incredible performance of our
+        system.
       </p>
       <table id="table">
         <tr>
