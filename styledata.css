@@ -7,6 +7,20 @@ body {
   color: rgb(22, 26, 28);
 }
 
+.button {
+  padding: 15px;
+  margin: auto;
+  width: 50%;
+}
+
+.btNote {
+  border-radius: 50%;
+  border: 1px solid black;
+  color: white;
+  font: bold;
+  background-color: purple;
+}
+
 .title {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
