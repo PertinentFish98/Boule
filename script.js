@@ -2,7 +2,7 @@
 
 const bpm = document.getElementById('bpm');
 const notes = document.getElementById('notes');
-let newNotes = [...notes.value.split('-')];
+var newNotes = [...notes.value.split('-')];
 
 const buttonBpm = document.querySelector('#btnBpm');
 const buttonNotes = document.querySelector('#btnNotes');
@@ -11,10 +11,10 @@ const dataToSend = JSON.stringify(bpm.value, newNotes);
 let dataReceived = '';
 
 fetch('', {
-  credentials: 'same-origin',
+  credentials: 'http://172.24.1.1/metalo/',
   mode: 'same-origin',
   method: 'get',
-  headers: { 'Content-Tyoe': 'application/json' },
+  headers: { 'Content-Type': 'application/json' },
   body: dataToSend,
 })
   .then(resp => {
@@ -37,3 +37,9 @@ fetch('', {
   });
 
 console.log(`Received:${dataReceived}`);
+
+let i;
+
+for (i = 0; i < newNotes.length; i++) {
+  $.get(`/metalo/note${newNotes[i]}.cgi`);
+}
