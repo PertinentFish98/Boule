@@ -41,5 +41,5 @@ console.log(`Received:${dataReceived}`);
 let i;
 
 for (i = 0; i < newNotes.length; i++) {
-  $.get(`/metalo/note${newNotes[i]}.cgi`);
+  $.get(`http://172.24.1.1/metalo/note${newNotes[i]}.cgi`);
 }
