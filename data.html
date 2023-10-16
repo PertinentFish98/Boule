@@ -56,6 +56,10 @@
         }
         document.querySelector('#notes').value = null;
       };
+
+      const playNotes = function (note_name) {
+        $.get(`/metalo/note${note_name}.cgi`);
+      };
     </script>
   </head>
   <body>
@@ -137,6 +141,23 @@
         <button id="btnNotes" onclick="submitNotes()">Submit</button>
       </div>
     </div>
+
+    <div class="button">
+      <button class="btNote" onclick="playNotes('A')">A</button>
+      <button class="btNote" onclick="playNotes('A#')">A#</button>
+      <button class="btNote" onclick="playNotes('B')">B</button>
+      <button class="btNote" onclick="playNotes('C')">C</button>
+      <button class="btNote" onclick="playNotes('C#')">C#</button>
+      <button class="btNote" onclick="playNotes('D')">D</button>
+      <button class="btNote" onclick="playNotes('D#')">D#</button>
+      <button class="btNote" onclick="playNotes('E')">E</button>
+      <button class="btNote" onclick="playNotes('F')">F</button>
+      <button class="btNote" onclick="playNotes('F#')">F#</button>
+      <button class="btNote" onclick="playNotes('G')">G</button>
+      <button class="btNote" onclick="playNotes('G#')">G#</button>
+    </div>
+
     <script src="script.js" type="module"></script>
+    <script src="jquery.js"></script>
   </body>
 </html>
