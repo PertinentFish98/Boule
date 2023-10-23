@@ -13,6 +13,20 @@ body {
   width: 50%;
 }
 
+#btnIndex {
+  color: black;
+  display: block;
+  margin: auto;
+  border-radius: 4px;
+  background-color: white;
+}
+
+#btnIndex:hover {
+  color: white;
+  background-color: dodgerblue;
+  filter: brightness(0.8);
+}
+
 .btNote {
   border-radius: 50%;
   border: 1px solid black;
