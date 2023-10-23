@@ -49,7 +49,7 @@ img {
 .container {
   height: auto;
   width: auto;
-  position: relative;
+  position: absolute;
   background-color: black;
   border-radius: 8px;
 }
@@ -57,4 +57,5 @@ img {
 .text {
   color: beige;
   text-justify: auto;
+  padding-left: 10px;
 }
