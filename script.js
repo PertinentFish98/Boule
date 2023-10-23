@@ -1,5 +1,9 @@
 'use strict';
 
+document.querySelector('#btnIndex').addEventListener('click', function () {
+  location.href = 'index.html';
+});
+
 const bpm = document.getElementById('bpm');
 const notes = document.getElementById('notes');
 var newNotes = [...notes.value.split('-')];
@@ -12,7 +16,7 @@ let dataReceived = '';
 
 fetch('', {
   credentials: 'http://172.24.1.1/metalo/',
-  mode: 'same-origin',
+  mode: '172.24.1.1',
   method: 'get',
   headers: { 'Content-Type': 'application/json' },
   body: dataToSend,
