@@ -4,35 +4,42 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Xylophone via smartphone</title>
+    <title>Metalophone via site</title>
     <link rel="stylesheet" type="text/css" href="styleindex.css" />
-    <link rel="icon" type="image/jpg" href="Images/Xylophone.jpg" />
+    <link rel="icon" type="image/jpg" href="Images/Metalophone.jpg" />
   </head>
   <body>
     <div id="main">
-      <h1 class="title">Robotics application</h1>
+      <h1 class="title">Start&Go - Art&Science</h1>
       <button id="redirect">Music making</button>
       <script type="text/javascript">
-        document.getElementById('redirect').onclick = function () {
-          location.href = 'data.html';
-        };
+        document
+          .querySelector('#redirect')
+          .addEventListener('click', function () {
+            location.href = 'data.html';
+          });
       </script>
     </div>
 
     <div>
-      <img src="https://i.ytimg.com/vi/gvi5ccoE5Qs/maxresdefault.jpg" />
+      <img src="Images/ImageIndex.jpg" />
     </div>
 
     <div class="container">
       <h2 class="title">Ambition</h2>
       <p class="text">
         Our main objective is to develop a mechanical system which utilises a
-        simple lever principle in order to play the notes in the xylophone. Of
+        simple lever principle in order to play the notes in the metalophone. Of
         course, this will be automated in a way that the user can choose a
         sequence of notes with a determined bpm in a easy and interactive
         interface.
       </p>
-      <p class="text"></p>
+      <p class="text">
+        Briefly, we made a base of wood, in which we will allocate the motor,
+        the 'Boule', as well as the Arduino MegaPi and the RaspeberryPi. In
+        addition, the supports for the metal plates that will play the notes
+        were made by a 3D printer.
+      </p>
     </div>
   </body>
 </html>
