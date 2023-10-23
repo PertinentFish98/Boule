@@ -11,7 +11,7 @@
       const submitBpm = function () {
         const min = 10;
         const max = 90;
-        if (bpm.value <= min || bpm.value >= max) {
+        if (bpm.value < min || bpm.value > max) {
           alert('Impossible input. Please try again!');
         }
         document.querySelector('#bpm').value = null;
@@ -60,11 +60,13 @@
       const playNotes = function (note_name) {
         $.get(`http://172.24.1.1/metalo/note${note_name}.cgi`);
       };
+
     </script>
   </head>
   <body>
     <h1 class="title">Your turn to produce music!</h1>
-    <div class="box">
+    <div>
+      <button id="btnIndex" onclick="goIndex">Home</button>
       <p class="text">
         Now, you have the option to choose a bpm, which correponds to the speed
         used during the execution of the spetacle:
