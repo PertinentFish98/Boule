@@ -44,6 +44,12 @@
           'F#',
           'G',
           'G#',
+          '%',
+          '^',
+          '!',
+          '#',
+          '@',
+          '$',
         ];
         for (i in newNotes) {
           if (!notes.value.includes('-')) {
@@ -60,7 +66,6 @@
       const playNotes = function (note_name) {
         $.get(`http://172.24.1.1/metalo/note${note_name}.cgi`);
       };
-
     </script>
   </head>
   <body>
@@ -79,63 +84,98 @@
       <p class="text">
         Also, you may create a sequence of music notes as you like. Please,
         consider looking at the table or put it in the notes directly and write
-        all of them at once, separating them by an hifen. After, just wait for
-        the incredible performance of our system.
+        all of them at once, separating them by an hifen. In additon, you may
+        use the symbols indicated below between two notes, in order to further
+        personalize your music. After, just wait for the incredible performance
+        of our system.
       </p>
-      <table id="table">
-        <tr>
-          <th>Number</th>
-          <th>Musical Note</th>
-        </tr>
-        <tr>
-          <th>1</th>
-          <th>A</th>
-        </tr>
-        <tr>
-          <th>2</th>
-          <th>A#</th>
-        </tr>
-        <tr>
-          <th>3</th>
-          <th>B</th>
-        </tr>
-        <tr>
-          <th>4</th>
-          <th>C</th>
-        </tr>
-        <tr>
-          <th>5</th>
-          <th>C#</th>
-        </tr>
-        <tr>
-          <th>6</th>
-          <th>D</th>
-        </tr>
-        <tr>
-          <th>7</th>
-          <th>D#</th>
-        </tr>
-        <tr>
-          <th>8</th>
-          <th>E</th>
-        </tr>
-        <tr>
-          <th>9</th>
-          <th>F</th>
-        </tr>
-        <tr>
-          <th>10</th>
-          <th>F#</th>
-        </tr>
-        <tr>
-          <th>11</th>
-          <th>G</th>
-        </tr>
-        <tr>
-          <th>12</th>
-          <th>G#</th>
-        </tr>
-      </table>
+      <div class="tables">
+        <table id="tableNotes">
+          <tr>
+            <th>Number</th>
+            <th>Musical Note</th>
+          </tr>
+          <tr>
+            <th>1</th>
+            <th>A</th>
+          </tr>
+          <tr>
+            <th>2</th>
+            <th>A#</th>
+          </tr>
+          <tr>
+            <th>3</th>
+            <th>B</th>
+          </tr>
+          <tr>
+            <th>4</th>
+            <th>C</th>
+          </tr>
+          <tr>
+            <th>5</th>
+            <th>C#</th>
+          </tr>
+          <tr>
+            <th>6</th>
+            <th>D</th>
+          </tr>
+          <tr>
+            <th>7</th>
+            <th>D#</th>
+          </tr>
+          <tr>
+            <th>8</th>
+            <th>E</th>
+          </tr>
+          <tr>
+            <th>9</th>
+            <th>F</th>
+          </tr>
+          <tr>
+            <th>10</th>
+            <th>F#</th>
+          </tr>
+          <tr>
+            <th>11</th>
+            <th>G</th>
+          </tr>
+          <tr>
+            <th>12</th>
+            <th>G#</th>
+          </tr>
+        </table>
+
+        <table id="tableSymbols">
+          <tr>
+            <th>Symbols</th>
+            <th>Functionality</th>
+          </tr>
+          <tr>
+            <th>%</th>
+            <th>Speed*0.5</th>
+          </tr>
+          <tr>
+            <th>^</th>
+            <th>Speed*1.25</th>
+          </tr>
+          <tr>
+            <th>!</th>
+            <th>Speed*2</th>
+          </tr>
+          <tr>
+            <th>#</th>
+            <th>Delay*0.5</th>
+          </tr>
+          <tr>
+            <th>@</th>
+            <th>Delay*1.25</th>
+          </tr>
+          <tr>
+            <th>$</th>
+            <th>Delay*2</th>
+          </tr>
+        </table>
+      </div>
 
       <div class="input">
         <label for="notes">Musical notes:</label>
