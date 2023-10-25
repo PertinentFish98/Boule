@@ -55,9 +55,31 @@ body {
   text-align: center;
 }
 
-#table,
+.text {
+  text-justify: inter-word;
+}
+
+.tables {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+}
+
+#tableNotes {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+  table-layout: fixed;
+}
+
+#tableSymbols {
+  margin-left: 50px;
+  padding-bottom: 80px;
+}
+
 th,
 td {
-  margin: auto;
   border: 1px solid black;
 }
