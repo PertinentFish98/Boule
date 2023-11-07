@@ -36,6 +36,10 @@ body {
   background-color: purple;
 }
 
+.btNote:hover {
+  cursor: pointer;
+}
+
 .title {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
