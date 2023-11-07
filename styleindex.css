@@ -54,6 +54,10 @@ img {
   border-radius: 8px;
 }
 
+.imgIndex {
+  border-radius: 20%;
+}
+
 .text {
   color: beige;
   text-justify: auto;
