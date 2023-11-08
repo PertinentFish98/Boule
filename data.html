@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>User interface</title>
     <link rel="stylesheet" type="text/css" href="styledata.css" />
-    <link rel="icon" type="image/png" href="User-interface.png" />
+    <link rel="icon" type="image/png" href="Images/User-interface.png" />
     <script>
       const submitBpm = function () {
         const min = 1;
@@ -45,15 +45,8 @@
           'F#',
           'G',
           'G#',
-          '%',
-          '^',
-          '!',
-          '#',
-          '@',
-          '$',
         ];
         let check = 0;
-        let j = 0;
         if (!notes.value.includes('-')) {
           alert('Please write the correct parameter = "-"');
           check = 1;
@@ -65,19 +58,9 @@
               check = 1;
             }
           }
-          if (
-            newNotes[i] == '%' ||
-            newNotes[i] == '^' ||
-            newNotes[i] == '!' ||
-            newNotes[i] == '#' ||
-            newNotes[i] == '@' ||
-            newNotes[i] == '$'
-          ) {
-            j++;
-          }
         }
         if (check !== 1) {
-          if (newNotes.length - j > notemax) {
+          if (newNotes.length > notemax) {
             alert(`Please write up to a ${notemax} note sequence!`);
           }
         }
@@ -166,38 +149,7 @@
           </tr>
         </table>
 
-        <table id="tableSymbols">
-          <tr>
-            <th>Symbols</th>
-            <th>Functionality</th>
-          </tr>
-          <tr>
-            <th>%</th>
-            <th>Delay*0.5</th>
-          </tr>
-          <tr>
-            <th>^</th>
-            <th>Delay*0.75</th>
-          </tr>
-          <tr>
-            <th>!</th>
-            <th>Delay*1.25</th>
-          </tr>
-          <tr>
-            <th>#</th>
-            <th>Delay*1.5</th>
-          </tr>
-          <tr>
-            <th>@</th>
-            <th>Delay*1.75</th>
-          </tr>
-          <tr>
-            <th>$</th>
-            <th>Delay*2</th>
-          </tr>
-        </table>
-      </div>
-
+       
       <div class="input">
         <label for="notes">Musical notes (max=12):</label>
         <input type="text" id="notes" name="notes" />
