@@ -19,12 +19,24 @@ body {
   margin: auto;
   border-radius: 4px;
   background-color: white;
+  transition: color, background, font-size 0.5s ease-in-out;
 }
 
 #btnIndex:hover {
   color: white;
-  background-color: dodgerblue;
+  background: linear-gradient(45deg, dodgerblue, black);
   filter: brightness(0.8);
+  cursor: pointer;
+  font-size: 105%;
+}
+
+#btnSubmit {
+  transition: background, color 0.5s ease-in-out;
+}
+
+#btnSubmit:hover {
+  background: black;
+  color: white;
 }
 
 .btNote {
