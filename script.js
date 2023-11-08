@@ -12,10 +12,10 @@ const newNotes = [...notes.value.split('-')];
 const dataToSend = JSON.stringify(bpm.value, newNotes);
 let dataReceived = '';
 
-fetch('', {
-  credentials: 'http://172.24.1.1',
-  mode: '172.24.1.1',
-  method: 'get',
+fetch('https://172.24.1.1', {
+  credentials: 'include',
+  mode: 'cors',
+  method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: dataToSend,
 })
