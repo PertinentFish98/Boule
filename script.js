@@ -9,22 +9,7 @@ const notes = document.getElementById('notes');
 
 const newNotes = [...notes.value.split('-')];
 
-const A = document.querySelector('#btn1').value;
-const Ap = document.querySelector('#btn2').value;
-const B = document.querySelector('#btn3').value;
-const C = document.querySelector('#btn4').value;
-const Cp = document.querySelector('#btn5').value;
-const D = document.querySelector('#btn6').value;
-const Dp = document.querySelector('#btn7').value;
-const E = document.querySelector('#btn8').value;
-const F = document.querySelector('#btn9').value;
-const Fp = document.querySelector('#btn10').value;
-const G = document.querySelector('#btn11').value;
-const Gp = document.querySelector('#btn12').value;
-
-const Notes = [A, Ap, B, C, Cp, D, Dp, E, F, Fp, G, Gp];
-
-const dataToSend = JSON.stringify(bpm.value, newNotes, Notes);
+const dataToSend = JSON.stringify(bpm.value, newNotes);
 let dataReceived = '';
 
 fetch('', {
