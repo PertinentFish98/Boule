@@ -64,7 +64,7 @@
               alert('Impossible input. Please try again!');
               check = 1;
             }
-          } else if (
+          } if (
             newNotes[i] === '%' ||
             newNotes[i] === '^' ||
             newNotes[i] === '!' ||
@@ -75,7 +75,6 @@
             j++;
           }
         }
-        console.log(j);
         if (check !== 1) {
           if (newNotes.length - j > notemax) {
             alert(`Please write up to a ${notemax} note sequence!`);
