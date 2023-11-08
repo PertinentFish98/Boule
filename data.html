@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>User interface</title>
     <link rel="stylesheet" type="text/css" href="styledata.css" />
-    <link rel="icon" type="image/png" href="Images/User-interface.png" />
+    <link rel="icon" type="image/png" href="User-interface.png" />
     <script>
       const submitBpm = function () {
         const min = 1;
@@ -47,9 +47,11 @@
           'G#',
         ];
         let check = 0;
-        if (!notes.value.includes('-')) {
-          alert('Please write the correct parameter = "-"');
-          check = 1;
+        if (newNotes.length > 1){
+          if (!notes.value.includes('-')) {
+            alert('Please write the correct parameter = "-"');
+            check = 1;
+          }
         }
         for (i in newNotes) {
           if (check !== 1) {
