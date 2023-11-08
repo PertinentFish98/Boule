@@ -10,7 +10,7 @@
     <script>
       const submitBpm = function () {
         const min = 1;
-        const max = 120;
+        const max = 95;
         if (bpm.value < min || bpm.value > max) {
           alert('Impossible input. Please try again!');
         }
@@ -97,7 +97,7 @@
         used during the execution of the spetacle:
       </p>
       <div class="input">
-        <label for="bpm">BPM(1 to 120):</label>
+        <label for="bpm">BPM(1 to 95):</label>
         <input type="number" id="bpm" name="bpm" />
         <button id="btnSubmit" onclick="submitBpm()">Submit</button>
       </div>
