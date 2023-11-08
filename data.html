@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>User interface</title>
     <link rel="stylesheet" type="text/css" href="styledata.css" />
-    <link rel="icon" type="image/png" href="User-interface.png" />
+    <link rel="icon" type="image/png" href="Images/User-interface.png" />
     <script>
       const submitBpm = function () {
         const min = 1;
@@ -68,6 +68,36 @@
         }
         document.querySelector('#notes').value = null;
       };
+      const sendNote = function(Note){
+        const dataToSend = JSON.stringify(Note);
+        let dataReceived = '';
+
+        fetch('', {
+          credentials: 'http://172.24.1.1',
+          mode: '172.24.1.1',
+          method: 'get',
+          headers: { 'Content-Type': 'application/json' },
+          body: dataToSend,
+        })
+          .then(resp => {
+            if (resp.status === 200) {
+              return resp.json();
+            } else {
+              console.log(`Status:${resp.status}`);
+              return Promise.reject('server');
+            }
+          })
+
+          .then(dataJson => {
+            dataReceived = JSON.parse(dataJson);
+          })
+
+          .catch(err => {
+            if (err === 'server') {
+              return console.log(err);
+            }
+          });
+      }
     </script>
   </head>
   <body>
@@ -157,18 +187,18 @@
     </div>
 
     <div class="button">
-      <button class="btNote" id="btn1">A</button>
-      <button class="btNote" id="btn2">A#</button>
-      <button class="btNote" id="btn3">B</button>
-      <button class="btNote" id="btn4">C</button>
-      <button class="btNote" id="btn5">C#</button>
-      <button class="btNote" id="btn6">D</button>
-      <button class="btNote" id="btn7">D#</button>
-      <button class="btNote" id="btn8">E</button>
-      <button class="btNote" id="btn9">F</button>
-      <button class="btNote" id="btn10">F#</button>
-      <button class="btNote" id="btn11">G</button>
-      <button class="btNote" id="btn12">G#</button>
+      <button class="btNote" id="btn1" onclick="sendNote('A')">A</button>
+      <button class="btNote" id="btn2" onclick="sendNote('A#')">A#</button>
+      <button class="btNote" id="btn3" onclick="sendNote('B')">B</button>
+      <button class="btNote" id="btn4" onclick="sendNote('C')">C</button>
+      <button class="btNote" id="btn5" onclick="sendNote('C#')">C#</button>
+      <button class="btNote" id="btn6" onclick="sendNote('D')">D</button>
+      <button class="btNote" id="btn7" onclick="sendNote('D#')">D#</button>
+      <button class="btNote" id="btn8" onclick="sendNote('E')">E</button>
+      <button class="btNote" id="btn9" onclick="sendNote('F')">F</button>
+      <button class="btNote" id="btn10" onclick="sendNote('F#')">F#</button>
+      <button class="btNote" id="btn11" onclick="sendNote('G')">G</button>
+      <button class="btNote" id="btn12" onclick="sendNote('G#')">G#</button>
     </div>
 
     <script src="script.js" type="module"></script>
