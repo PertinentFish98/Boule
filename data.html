@@ -10,7 +10,7 @@
     <script>
       const submitBpm = function () {
         const min = 1;
-        const max = 42;
+        const max = 120;
         if (bpm.value < min || bpm.value > max) {
           alert('Impossible input. Please try again!');
         }
@@ -64,13 +64,14 @@
               alert('Impossible input. Please try again!');
               check = 1;
             }
-          } if (
-            newNotes[i] === '%' ||
-            newNotes[i] === '^' ||
-            newNotes[i] === '!' ||
-            newNotes[i] === '#' ||
-            newNotes[i] === '@' ||
-            newNotes[i] === '$'
+          }
+          if (
+            newNotes[i] == '%' ||
+            newNotes[i] == '^' ||
+            newNotes[i] == '!' ||
+            newNotes[i] == '#' ||
+            newNotes[i] == '@' ||
+            newNotes[i] == '$'
           ) {
             j++;
           }
@@ -96,9 +97,9 @@
         used during the execution of the spetacle:
       </p>
       <div class="input">
-        <label for="bpm">BPM(1 to 42):</label>
+        <label for="bpm">BPM(1 to 120):</label>
         <input type="number" id="bpm" name="bpm" />
-        <button id="btnBpm" onclick="submitBpm()">Submit</button>
+        <button id="btnSubmit" onclick="submitBpm()">Submit</button>
       </div>
       <p class="text">
         Also, you may create a sequence of music notes as you like. Please,
@@ -200,7 +201,7 @@
       <div class="input">
         <label for="notes">Musical notes (max=12):</label>
         <input type="text" id="notes" name="notes" />
-        <button id="btnNotes" onclick="submitNotes()">Submit</button>
+        <button id="btnSubmit" onclick="submitNotes()">Submit</button>
       </div>
     </div>
 
