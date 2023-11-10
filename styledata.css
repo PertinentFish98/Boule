@@ -53,7 +53,8 @@ body {
   cursor: pointer;
 }
 
-.title {
+.title,
+.title_submit {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
   text-align: center;
@@ -74,6 +75,24 @@ body {
 
 .text {
   text-justify: inter-word;
+}
+
+.text_submit {
+  text-align: center;
+  color: red;
+}
+
+.title_submit {
+  color: white;
+}
+
+.div_submit {
+  display: block;
+  margin: auto;
+  width: auto;
+  background-color: black;
+  border-radius: 10%;
+  transition: background-color 0.5s ease-in-out;
 }
 
 .tables {
