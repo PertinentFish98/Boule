@@ -1,0 +1,48 @@
+body {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 15px;
+  padding: 5px;
+  background: linear-gradient(90deg, rgb(124, 167, 190), white);
+  color: rgb(22, 26, 28);
+}
+
+.title {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  color: black;
+}
+
+.report {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  color: black;
+  padding-top: 10px;
+  padding-bottom: 30px;
+}
+
+.text {
+  text-justify: inter-word;
+  text-align: center;
+  color: red;
+  padding-bottom: 50px;
+}
+
+#btnIndex {
+  color: black;
+  display: block;
+  margin: auto;
+  border-radius: 4px;
+  background-color: white;
+  transition: color, background, font-size 0.5s ease-in-out;
+  margin-bottom: 10px;
+}
+
+#btnIndex:hover {
+  color: white;
+  background: linear-gradient(45deg, dodgerblue, black);
+  filter: brightness(0.8);
+  cursor: pointer;
+  font-size: 105%;
+}

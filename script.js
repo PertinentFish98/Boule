@@ -4,38 +4,64 @@ document.querySelector('#btnIndex').addEventListener('click', function () {
   location.href = 'index.html';
 });
 
-const bpm = document.getElementById('bpm');
-const notes = document.getElementById('notes');
-
-const newNotes = [...notes.value.split('-')];
-
-const dataToSend = JSON.stringify(bpm.value, newNotes);
+let dataToSend1;
+let dataToSend2;
 let dataReceived = '';
 
-fetch('https://172.24.1.254', {
-  credentials: 'include',
-  mode: 'cors',
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: dataToSend,
-})
-  .then(resp => {
-    if (resp.status === 200) {
-      return resp.json();
-    } else {
-      console.log(`Status:${resp.status}`);
-      return Promise.reject('server');
-    }
-  })
+let bpm;
+let notes;
+let newNotes;
+let bpmValues = [];
+let musicalSequence = [];
 
-  .then(dataJson => {
-    dataReceived = JSON.parse(dataJson);
-  })
+const check = localStorage.getItem('check');
+console.log(check);
 
-  .catch(err => {
-    if (err === 'server') {
-      return console.log(err);
-    }
-  });
+const sendData = function (dataToSend) {
+  fetch('127.0.0.1:8080', {
+    credentials: 'include',
+    mode: 'cors',
+    method: 'get',
+    headers: { 'Content-Type': 'application/json' },
+    body: dataToSend,
+  })
+    .then(resp => {
+      if (resp.status === 200) {
+        return resp.json();
+      } else {
+        console.log(`Status:${resp.status}`);
+        return Promise.reject('server');
+      }
+    })
+
+    .then(dataJson => {
+      dataReceived = JSON.parse(dataJson);
+    })
+
+    .catch(err => {
+      if (err === 'server') {
+        return console.log(err);
+      }
+    });
+};
+
+document.querySelector('#btnBpm').addEventListener('click', function () {
+  bpm = document.getElementById('bpm');
+  dataToSend1 = JSON.stringify(bpm.value);
+  sendData(dataToSend1);
+  bpmValues.push(dataToSend1);
+  localStorage.setItem('bpmValues', bpmValues);
+  document.querySelector('#bpm').value = null;
+});
+
+document.querySelector('#btnNotes').addEventListener('click', function () {
+  notes = document.getElementById('notes');
+  newNotes = [...notes.value.split('-')];
+  dataToSend2 = JSON.stringify(newNotes);
+  sendData(dataToSend2);
+  musicalSequence.push(dataToSend2);
+  localStorage.setItem('musicalSequence', JSON.stringify(musicalSequence));
+  document.querySelector('#notes').value = null;
+});
 
 console.log(`Received:${dataReceived}`);

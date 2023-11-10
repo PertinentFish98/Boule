@@ -6,22 +6,34 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>User interface</title>
     <link rel="stylesheet" type="text/css" href="styledata.css" />
-    <link rel="icon" type="image/png" href="User-interface.png" />
+    <link rel="icon" type="image/png" href="Images/User-interface.png" />
     <script>
-      let cond = true;
+      let cond = false;
+      let k = 0;
+      let clicks = 0;
+      let check = 1;
+
       const submitBpm = function () {
         const min = 1;
         const max = 95;
         if (bpm.value < min || bpm.value > max) {
           alert('Impossible input. Please try again!');
+          return;
         }
-        document.querySelector('#bpm').value = null;
-        cond = false;
+        if (check == 0) {
+    alert(
+      'Sorry! It is not possible to send multiple bpm without specifying the musical sequence.'
+    );
+    document.querySelector('#bpm').value = null;
+        }
+        cond = true;
+        check = 0;
       };
 
       const submitNotes = function () {
         let newNotes = [...notes.value.split('-')];
         let notemax = 12;
+
         const possibleChoices = [
           '1',
           '2',
@@ -48,49 +60,67 @@
           'G',
           'G#',
         ];
-        let check = 0;
-        if(newNotes.length > 1){
-          if (!notes.value.includes('-')) {
-            alert('Please write the correct parameter = "-"');
-            check = 1;
-          }
+
+        if(!cond){
+          alert('You should especify the BPM before launching the sequence!');
+          return;
         }
-        for (i in newNotes) {
-          if (check !== 1) {
-            if (!possibleChoices.includes(newNotes[i].toUpperCase())) {
-              alert('Impossible input. Please try again!');
-              check = 1;
+
+        const checkNotes = notes.value;
+        for (j in checkNotes){
+            if (checkNotes[j] === '-'){
+              k++;
             }
           }
-        }
-        if (check !== 1) {
-          if (newNotes.length > notemax) {
-            alert(`Please write up to a ${notemax} note sequence!`);
+
+        for (i in newNotes) {
+          if (!possibleChoices.includes(newNotes[i].toUpperCase())) {
+            if (k!=newNotes.length-1){
+              alert('Please write with the correct parameter = "-"');
+            } else{
+              alert('Impossible input. Please try again!');
+            }
+            return;
           }
         }
-        if(cond){
-          alert('You should especify the BPM before launching the sequence!');
+
+        if (newNotes.length > notemax) {
+          alert(`Please write up to a ${notemax} note sequence!`);
+          return;
         }
 
-        document.querySelector('#notes').value = null;
+        clicks++;
 
+        check = 1;
+      };
+
+      const programmEnd = function(){
         const stringToHTML = function(str) {
           const dom = document.createElement('div');
           dom.innerHTML = str;
           return dom;
         };
-
-        if(!cond){
-          const htmlElement = stringToHTML('<div class="div_submit"><h1 class="title_submit">Thank you for using our site!</h1><p class="text_submit">###Centrale Boule###</p></div>');
-          document.body.appendChild(htmlElement);
-          cond = true;
+        if(clicks == 0){
+          alert('Please, fill the forms before ending the session!')
+          return;
         }
-      };
+        if(cond){
+          const htmlElement = stringToHTML(`<div class="div_submit"><h1 class="title_submit">Thank you for using our site!</h1><h3 class="title_submit">You submitted ${clicks} ${clicks==1 ? 'time' : 'times'}.<h3><p class="text_submit">###Centrale Boule###</p></div> <div class="divEnd">
+      <button id="btnView" onclick="viewSummary()">View summary</button>
+    </div>`);
+          document.body.appendChild(htmlElement);
+        }
+      }
+
+      const viewSummary = function(){
+        location.href='summary.html';
+      }
+
       const sendNote = function(Note){
         const dataToSend = JSON.stringify(Note);
         let dataReceived = '';
 
-        fetch('https://172.24.1.254', {
+        fetch('127.0.0.1:8080', {
           credentials: 'include',
           mode: 'cors',
           method: 'POST',
@@ -115,13 +145,14 @@
               return console.log(err);
             }
           });
-      }
+        }
+
     </script>
   </head>
   <body>
     <h1 class="title">Your turn to produce music!</h1>
     <div>
-      <button id="btnIndex" onclick="goIndex">Home</button>
+      <button id="btnIndex">Home</button>
       <p class="text">
         Now, you have the option to choose a bpm, which correponds to the speed
         used during the execution of the spetacle:
@@ -129,7 +160,7 @@
       <div class="input">
         <label for="bpm">BPM(1 to 95):</label>
         <input type="number" id="bpm" name="bpm" />
-        <button id="btnSubmit" onclick="submitBpm()">Submit</button>
+        <button id="btnBpm" onclick="submitBpm()">Submit</button>
       </div>
       <p class="text">
         Also, you may create a sequence of music notes as you like. Please,
@@ -195,12 +226,11 @@
             <th>G#</th>
           </tr>
         </table>
-
        
       <div class="input">
         <label for="notes">Musical notes (max=12):</label>
         <input type="text" id="notes" name="notes" />
-        <button id="btnSubmit" onclick="submitNotes()">Submit</button>
+        <button id="btnNotes" onclick="submitNotes()">Submit</button>
       </div>
     </div>
 
@@ -217,6 +247,10 @@
       <button class="btNote" id="btn10" onclick="sendNote('F#')">F#</button>
       <button class="btNote" id="btn11" onclick="sendNote('G')">G</button>
       <button class="btNote" id="btn12" onclick="sendNote('G#')">G#</button>
+    </div>
+
+    <div class="divEnd">
+      <button id="btnEnd" onclick="programmEnd()">End session</button>
     </div>
 
     <script src="script.js" type="module"></script>

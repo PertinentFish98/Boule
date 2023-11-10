@@ -20,6 +20,7 @@ body {
   border-radius: 4px;
   background-color: white;
   transition: color, background, font-size 0.5s ease-in-out;
+  margin-bottom: 10px;
 }
 
 #btnIndex:hover {
@@ -30,11 +31,13 @@ body {
   font-size: 105%;
 }
 
-#btnSubmit {
+#btnBpm,
+#btnNotes {
   transition: background, color 0.5s ease-in-out;
 }
 
-#btnSubmit:hover {
+#btnBpm:hover,
+#btnNotes:hover {
   background: black;
   color: white;
   cursor: pointer;
@@ -111,6 +114,25 @@ body {
 }
 
 th,
-td {
+tr {
   border: 1px solid black;
+}
+
+.divEnd {
+  display: block;
+  margin: auto;
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+#btnEnd,
+#btnView {
+  transition: background-color, color 0.5s ease-in-out;
+}
+
+#btnEnd:hover,
+#btnView:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
 }

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Summary</title>
+    <link rel="stylesheet" type="text/css" href="stylesummary.css" />
+    <link rel="icon" type="image/jpg" href="Images/Summary.jpg" />
+  </head>
+  <body>
+    <h1 class="title">Summary</h1>
+    <button id="btnIndex" onclick="location.href='index.html'">Home</button>
+    <script>
+      const stringToHTML = function (str) {
+        const dom = document.createElement('div');
+        dom.innerHTML = str;
+        return dom;
+      };
+
+      const bpmValues = localStorage.getItem('bpmValues');
+      const musicalSequence = localStorage.getItem('musicalSequence');
+
+      let bpmNew = [];
+      let musicNew = [];
+      let j = 1;
+      let k = 1;
+      let w = 0;
+
+      bpmNew = bpmValues.replaceAll('"', '');
+
+      const bpmFinal = bpmNew.split(',');
+
+      for (i in bpmFinal) {
+        if (bpmFinal[i] == '') {
+          bpmFinal[i] = 'Undefined due to alert';
+        }
+      }
+
+      for (j = 0; j < musicalSequence.length; j++) {
+        j += 5;
+        if (!j % 5) {
+          musicNew[j / 5] = musicalSequence[j];
+        } else {
+          musicNew[(j - (j % 5)) / 5] = musicalSequence[j];
+        }
+        if (
+          musicalSequence[j + 4] == '"' &&
+          musicalSequence[j + 5] == ',' &&
+          musicalSequence[j + 6] == '"'
+        ) {
+          j += 4;
+        }
+      }
+
+      const musicNewString = musicNew.join('');
+
+      const musicFinal = musicNewString.split('');
+
+      const html = stringToHTML(
+        `<p class="report">After all your submissions, you have typed:</p><p class="title">Bpm:</p><p class="text">${bpmFinal}</p><p class="title">Musical Sequences:</p><p class="text">${musicFinal}</p>`
+      );
+      document.body.appendChild(html);
+    </script>
+    <script src="script.js" type="module"></script>
+  </body>
+</html>
