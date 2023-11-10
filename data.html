@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>User interface</title>
     <link rel="stylesheet" type="text/css" href="styledata.css" />
-    <link rel="icon" type="image/png" href="User-interface.png" />
+    <link rel="icon" type="image/png" href="Images/User-interface.png" />
     <script>
       const submitBpm = function () {
         const min = 1;
@@ -72,7 +72,7 @@
         const dataToSend = JSON.stringify(Note);
         let dataReceived = '';
 
-        fetch('https://172.24.1.1', {
+        fetch('https://172.24.1.254', {
           credentials: 'include',
           mode: 'cors',
           method: 'POST',

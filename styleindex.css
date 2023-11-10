@@ -65,7 +65,15 @@ img {
   margin-right: 40px;
 }
 
+.divIndex {
+  display: block;
+  width: auto;
+  margin: auto;
+  text-align: center;
+}
+
 .imgIndex {
+  display: inline-block;
   border-radius: 20%;
 }
 
