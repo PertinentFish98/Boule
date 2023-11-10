@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="styledata.css" />
     <link rel="icon" type="image/png" href="User-interface.png" />
     <script>
+      let cond = true;
       const submitBpm = function () {
         const min = 1;
         const max = 95;
@@ -15,6 +16,7 @@
           alert('Impossible input. Please try again!');
         }
         document.querySelector('#bpm').value = null;
+        cond = false;
       };
 
       const submitNotes = function () {
@@ -66,7 +68,23 @@
             alert(`Please write up to a ${notemax} note sequence!`);
           }
         }
+        if(cond){
+          alert('You should especify the BPM before launching the sequence!');
+        }
+
         document.querySelector('#notes').value = null;
+
+        const stringToHTML = function(str) {
+          const dom = document.createElement('div');
+          dom.innerHTML = str;
+          return dom;
+        };
+
+        if(!cond){
+          const htmlElement = stringToHTML('<div class="div_submit"><h1 class="title_submit">Thank you for using our site!</h1><p class="text_submit">###Centrale Boule###</p></div>');
+          document.body.appendChild(htmlElement);
+          cond = true;
+        }
       };
       const sendNote = function(Note){
         const dataToSend = JSON.stringify(Note);
