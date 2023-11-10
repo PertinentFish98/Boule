@@ -37,6 +37,7 @@ body {
 #btnSubmit:hover {
   background: black;
   color: white;
+  cursor: pointer;
 }
 
 .btNote {
