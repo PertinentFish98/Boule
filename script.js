@@ -14,9 +14,6 @@ let newNotes;
 let bpmValues = [];
 let musicalSequence = [];
 
-const check = localStorage.getItem('check');
-console.log(check);
-
 const sendData = function (dataToSend) {
   fetch('127.0.0.1:8080', {
     credentials: 'include',
@@ -57,6 +54,9 @@ document.querySelector('#btnBpm').addEventListener('click', function () {
 document.querySelector('#btnNotes').addEventListener('click', function () {
   notes = document.getElementById('notes');
   newNotes = [...notes.value.split('-')];
+  newNotes = newNotes.filter(function (el) {
+    return el != null;
+  });
   dataToSend2 = JSON.stringify(newNotes);
   sendData(dataToSend2);
   musicalSequence.push(dataToSend2);
