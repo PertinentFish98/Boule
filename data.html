@@ -72,6 +72,7 @@
               k++;
             }
           }
+          console.log(k);
 
         for (i in newNotes) {
           if (!possibleChoices.includes(newNotes[i].toUpperCase())) {
@@ -80,7 +81,7 @@
                 alert('Please write with the correct parameter = "-"');
               }
             }
-            else if(newNotes < 1 || newNotes > 12){
+            if(newNotes[i] < 1 || newNotes[i] > 12){
               alert('Impossible input. Please try again!');
               break;
             }
