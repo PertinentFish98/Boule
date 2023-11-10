@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>User interface</title>
     <link rel="stylesheet" type="text/css" href="styledata.css" />
-    <link rel="icon" type="image/png" href="User-interface.png" />
+    <link rel="icon" type="image/png" href="Images/User-interface.png" />
     <script>
       let cond = false;
       let k = 0;
@@ -24,7 +24,7 @@
     alert(
       'Sorry! It is not possible to send multiple bpm without specifying the musical sequence.'
     );
-    document.querySelector('#bpm').value = null;
+        return;
         }
         cond = true;
         check = 0;
@@ -75,10 +75,17 @@
 
         for (i in newNotes) {
           if (!possibleChoices.includes(newNotes[i].toUpperCase())) {
-            if (k!=newNotes.length-1){
-              alert('Please write with the correct parameter = "-"');
-            } else{
+            if(newNotes.length > 1){
+              if (k!=newNotes.length-1){
+                alert('Please write with the correct parameter = "-"');
+              }
+            }
+            else if(newNotes < 1 || newNotes > 12){
               alert('Impossible input. Please try again!');
+              break;
+            }
+            else if (!k){
+              alert('Please write with the correct parameter = "-"');
             }
             return;
           }
@@ -90,7 +97,6 @@
         }
 
         clicks++;
-
         check = 1;
       };
 
