@@ -18,7 +18,7 @@ const sendData = function (dataToSend) {
   fetch('127.0.0.1:8080', {
     credentials: 'include',
     mode: 'cors',
-    method: 'get',
+    method: 'post',
     headers: { 'Content-Type': 'application/json' },
     body: dataToSend,
   })
